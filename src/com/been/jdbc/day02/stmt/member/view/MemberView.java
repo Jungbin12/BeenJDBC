@@ -48,15 +48,20 @@ public class MemberView {
 			case 4 : 
 				// 아이디 입력받기
 				memberId = inputMemberId();
-				// 수정할 정보 입력받기
-				member = modifyMember(memberId);
-				// DB 에서 정보 수정하도록 요청하기
-				result = mController.updateMember(member);
-				// 결과에 따른 메세지 출력
-				if(result > 0) {
-					printMessage("회원 정보 수정이 완료되었습니다");
+				member = mController.findOneById(memberId);
+				if(member != null) {
+					// 수정할 정보 입력받기
+					member = modifyMember(memberId);
+					// DB 에서 정보 수정하도록 요청하기
+					result = mController.updateMember(member);
+					// 결과에 따른 메세지 출력
+					if(result > 0) {
+						printMessage("회원 정보 수정이 완료되었습니다");
+					} else {
+						printMessage("회원 정보 수정이 완료되지 않았습니다");
+					}
 				} else {
-					printMessage("회원 정보 수정이 완료되지 않았습니다");
+					this.printMessage("해당 정보가 존재하지 않습니다");
 				}
 				break;
 			case 5 : 
