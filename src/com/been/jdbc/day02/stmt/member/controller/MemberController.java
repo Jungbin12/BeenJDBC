@@ -14,7 +14,7 @@ public class MemberController {
 		mDao = new MemberDAO();
 	}
 	public Member findOneById(String memberId) {
-		return null;
+		return mDao.selectOneById(memberId);
 	}
 	public List<Member> showMemberList() {
 		List<Member> mList = mDao.selectList();

@@ -1,11 +1,10 @@
-package com.been.jdbc.day02.stmt.member.view;
+package com.been.jdbc.day03.pstmt.member.view;
 
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import com.been.jdbc.day03.pstmt.member.controller.MemberController;
+import com.been.jdbc.day03.pstmt.member.model.vo.Member;
 
-import com.been.jdbc.day02.stmt.member.controller.MemberController;
-import com.been.jdbc.day02.stmt.member.model.vo.Member;
 
 
 public class MemberView {
@@ -40,10 +39,15 @@ public class MemberView {
 			case 3 : 
 				// 아이디 입력받기
 				memberId = inputMemberId();
-				// 디비에서 회원정보 가져오기
 				member = mController.findOneById(memberId);
-				// 출력하기
-				printOne(member);
+				if(member != null) {
+					// 디비에서 회원정보 가져오기
+					member = mController.findOneById(memberId);
+					// 출력하기
+					printOne(member);
+				} else {
+					this.printMessage("해당 정보가 존재하지 않습니다");
+				}
 				break;
 			case 4 : 
 				// 아이디 입력받기
@@ -166,7 +170,7 @@ public class MemberView {
 	// 메뉴 출력
 	private int printMenu() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("====== 회원 관리 프로그램(day02, stmt) ======");
+		System.out.println("====== 회원 관리 프로그램(day03, pstmt) ======");
 		System.out.println("1. 회원가입");
 		System.out.println("2. 회원 전체 조회");
 		System.out.println("3. 회원 검색(아이디)");

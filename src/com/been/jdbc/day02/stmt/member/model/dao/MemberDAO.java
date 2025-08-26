@@ -15,8 +15,8 @@ import com.been.jdbc.day02.stmt.member.model.vo.Member;
 public class MemberDAO {
 	private final String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	private final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private final String USER = "ELONJDBC";
-	private final String PASSWORD = "ELONJDBC";
+	private final String USER = "BEENJDBC";
+	private final String PASSWORD = "BEENJDBC";
 	
 	
 	public List<Member> selectList() {
